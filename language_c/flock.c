@@ -8,7 +8,8 @@
 #include <sys/wait.h>
 #include <sys/time.h>
 #include <argp.h>
-
+#include <sys/syscall.h>
+syscall(SYS_read, )
 /**
  * this function just show how to use flock syscall.
  * detail info you should to see shell commond #man 2 flock
@@ -140,7 +141,7 @@ void flockTest(int father_operation, int child_operation, int fatherSleepSecond)
     flock(fd, LOCK_UN);
     close(fd);
     wait(NULL);
-
+    syscall(__NR)
 
 }
 

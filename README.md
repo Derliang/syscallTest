@@ -14,4 +14,6 @@
     
 ## APIs
 
-### [flock]()
+| function name  |      NR  | C          |  golang      |
+|----------------|----------|------------|--------------|
+|flock           |  73|[flock.c](https://github.com/Derliang/syscallTest/blob/master/language_c/flock.c)  |  todo |
