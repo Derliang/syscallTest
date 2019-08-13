@@ -1,4 +1,4 @@
 
 add_executable(flockTest flock.c)
 
-#add_executable(flock flock.c)
+add_executable(openTest open.c)
