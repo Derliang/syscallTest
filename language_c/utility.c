@@ -9,13 +9,14 @@
 #include <string.h>
 #include <stdlib.h>
 void Dlog(char *msg, ...) {
-    char buf[2048];
+    char buf[2048] ={0x00};
     strcpy(buf, msg);
-    strstr(buf, "\n errno is%d ,error message %s");
 
     va_list va;
     va_start(va, msg);
-    printf(buf , va, errno, strerror(errno));
+    vsprintf(buf , msg, va);
     va_end(va);
+    printf(buf);
+    printf("\nerrno is %d ,error message: %s\n",errno, strerror(errno));
     exit(errno);
 }

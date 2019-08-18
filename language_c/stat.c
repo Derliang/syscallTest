@@ -2,6 +2,7 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <stdio.h>
+#include <errno.h>
 #include "utility.h"
 /*
 struct stat {
@@ -23,15 +24,14 @@ struct stat {
 void testStDev() {
     struct stat buf;
     char pwd[256];
-    if (getcwd(pwd, sizeof(pwd))) {
+    if (!getcwd(pwd, sizeof(pwd))) {
         Dlog("get pwd failed");
     }
+    printf("%s\n",pwd);
 
     char fileName[] = "../../data/stat/case1/stat_st_dev";
-    if (stat("fileName", &buf)) {
+    if (stat(fileName, &buf)) {
         Dlog("stat failed");
-//        printf("stat err errno:%d\n", errno);
-//        exit(errno);
     }
 
     printf("fileName %s: dev major ID = %d, minor ID = %d\n major ID is identifying the class of the device, minor ID is identifying a specific instance of a device in that class ", fileName, major(buf.st_dev), minor(buf.st_dev));
