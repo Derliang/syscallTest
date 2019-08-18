@@ -16,4 +16,5 @@
 
 | function name  |      NR  | C          |  golang      |
 |----------------|----------|------------|--------------|
+|stat            | 1        |[stat.c](https://github.com/Derliang/syscallTest/blob/master/language_c/stat.c)       |  todo            |
 |flock           |  73|[flock.c](https://github.com/Derliang/syscallTest/blob/master/language_c/flock.c)  |  todo |
