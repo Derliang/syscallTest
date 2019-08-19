@@ -45,6 +45,10 @@ void testStatInfo() {
     printf("file last modification time%d %d ",buf.st_atim.tv_sec, buf.st_atim.tv_nsec );
     printTime(&buf.st_mtim);
 
+    //uid git mode
+    printf("Mode :%lo\n", (unsigned long) buf.st_mode);
+    printf("Uid: %ld, GID %ld", (long)buf.st_uid, (long)buf.st_gid);
+
 
 
 }
