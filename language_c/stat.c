@@ -46,9 +46,8 @@ void testStatInfo() {
     printTime(&buf.st_mtim);
 
     //uid git mode
-    printf("Mode :%lo\n", (unsigned long) buf.st_mode);
+    printf("Mode :%lo  first two number indicate file type, the last four number show file mode like write read execute and so on\n", (unsigned long) buf.st_mode);
     printf("Uid: %ld, GID %ld", (long)buf.st_uid, (long)buf.st_gid);
-
 
 
 }
