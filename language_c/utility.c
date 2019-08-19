@@ -20,3 +20,11 @@ void Dlog(char *msg, ...) {
     printf("\nerrno is %d ,error message: %s\n",errno, strerror(errno));
     exit(errno);
 }
+
+
+void printTime(struct timespec *tm)
+{
+    char times[64];
+    strftime(times, sizeof(times), "%D %T",gmtime(&tm->tv_sec));
+    printf("current time %s.%09ld UTC\n", times, tm->tv_nsec);
+}

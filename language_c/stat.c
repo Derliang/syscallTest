@@ -3,6 +3,7 @@
 #include <sys/types.h>
 #include <stdio.h>
 #include <errno.h>
+#include <time.h>
 #include "utility.h"
 /*
 struct stat {
@@ -21,7 +22,8 @@ struct stat {
     time_t st_ctime;   // time of last status change //
 }*/
 
-void testStDev() {
+
+void testStatInfo() {
     struct stat buf;
     char pwd[256];
     if (!getcwd(pwd, sizeof(pwd))) {
@@ -34,19 +36,31 @@ void testStDev() {
         Dlog("stat failed");
     }
 
-    printf("fileName %s: dev major ID = %d, minor ID = %d\n major ID is identifying the class of the device, minor ID is identifying a specific instance of a device in that class ", fileName, major(buf.st_dev), minor(buf.st_dev));
+    printf("fileName %s: dev major ID = %d, minor ID = %d\n major ID is identifying the class of the device, minor ID is identifying a specific instance of a device in that class \n", fileName, major(buf.st_dev), minor(buf.st_dev));
+    printf("file size %ld\n", buf.st_size);
+    printf("file last access time%d %d ",buf.st_atim.tv_sec, buf.st_atim.tv_nsec );
+    printTime(&buf.st_atim);
+    printf("file last change time  like chmod blabla%d %d ",buf.st_atim.tv_sec, buf.st_atim.tv_nsec );
+    printTime(&buf.st_ctim);
+    printf("file last modification time%d %d ",buf.st_atim.tv_sec, buf.st_atim.tv_nsec );
+    printTime(&buf.st_mtim);
+
 
 
 }
+
+
 
 
 
 void testAllCase() {
-    testStDev();
-
+//    testStDev();
+    testStatInfo();
 }
 
 
+// please read this chinese article about inode
+// https://blog.csdn.net/xuz0917/article/details/79473562
 int main () {
     testAllCase();
 }
