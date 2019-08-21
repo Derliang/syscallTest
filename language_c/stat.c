@@ -22,7 +22,9 @@ struct stat {
     time_t st_ctime;   // time of last status change //
 }*/
 
-
+//what is inode
+//
+//
 void testStatInfo() {
     struct stat buf;
     char pwd[256];
@@ -47,8 +49,37 @@ void testStatInfo() {
 
     //uid git mode
     printf("Mode :%lo  first two number indicate file type, the last four number show file mode like write read execute and so on\n", (unsigned long) buf.st_mode);
-    printf("Uid: %ld, GID %ld", (long)buf.st_uid, (long)buf.st_gid);
+    printf("Uid: %ld, GID %ld //you can use command #cat /etc/passwd |grep root see root uid gid\n", (long)buf.st_uid, (long)buf.st_gid);
+    printf("IO block %ld  size, that means each block have \n", (long)buf.st_blksize);
+    printf("how many blocks: %lld\n", (long long )buf.st_blocks);
 
+    printf("file type:   ");
+    switch (buf.st_mode & S_IFMT) {
+        case S_IFBLK:
+            printf("block device\n");
+            break;
+        case S_IFREG:
+            printf("regular file\n");
+            break;
+        case S_IFDIR:
+            printf("dir\n");
+            break;
+        case S_IFCHR:
+            printf("character device\n");
+            break;
+        case S_IFIFO:
+            printf("fifo pipe\n");
+            break;
+        case S_IFLNK:
+            printf("sym link\n");
+            break;
+        case S_IFSOCK:
+            printf("socket\n");
+            break;
+        default:
+            printf("unknown file\n");;
+            break;
+    }
 
 }
 
