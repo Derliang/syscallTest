@@ -5,6 +5,7 @@
 #include <errno.h>
 #include <time.h>
 #include "utility.h"
+#include <bits/syscall.h>
 /*
 struct stat {
     dev_t st_dev;     // ID of device containing file //
